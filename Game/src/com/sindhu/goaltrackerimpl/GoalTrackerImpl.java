@@ -7,14 +7,11 @@ import com.sindhu.goaltracker.GoalTracker;
 
 public class GoalTrackerImpl implements GoalTracker {
 
-    private Map<String, Integer> board;
-    private String ScoringTeam;
+    private Map<String, Integer> board = new HashMap<>();
+    private String scoringTeam;
     private String lastMove;
 
     public GoalTrackerImpl() {
-        board = new HashMap<>();
-        ScoringTeam = "";
-        lastMove = "";
     }
 
     public static void main(String[] args) {
@@ -52,13 +49,13 @@ public class GoalTrackerImpl implements GoalTracker {
 
     @Override
     public void scoreForTeam(String name) {
-        if (ScoringTeam.equals(name) && lastMove.equals("Score"))
+        if (scoringTeam != null && scoringTeam.equals(name) && lastMove.equals(SCORE))
             board.put(name, board.get(name) + 2);
         else
             board.put(name, board.get(name) + 1);
 
-        lastMove = "Score";
-        ScoringTeam = name;
+        lastMove = SCORE;
+        scoringTeam = name;
     }
 
     @Override
@@ -66,7 +63,7 @@ public class GoalTrackerImpl implements GoalTracker {
         if (board.get(name) > 0)
             board.put(name, board.get(name) + -1);
         
-        lastMove = "Loss";
+        lastMove = LOSS;
     }
 
     @Override
