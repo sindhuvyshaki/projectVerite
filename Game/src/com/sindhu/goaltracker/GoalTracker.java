@@ -17,8 +17,7 @@ public interface GoalTracker {
     void lossForTeam(String name);
 
     /**
-     * Display the final tally
-     * @return
+     * @return a string that contains all teams and their respective scores
      */
     String displayScores();
 }

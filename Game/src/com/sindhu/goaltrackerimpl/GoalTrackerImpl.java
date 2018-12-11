@@ -75,14 +75,12 @@ public class GoalTrackerImpl implements GoalTracker {
             String currentTeamScore = "";
             currentTeamScore = currentTeamScore.concat(score.getKey()).concat(" : ")
                     .concat(score.getValue().toString());
-            if (!first)
-                teamScore = teamScore.concat(", ").concat(currentTeamScore);
-            else
+            if (first) {
                 teamScore = teamScore.concat(currentTeamScore);
-
-            first = false;
+                first = false;
+            } else
+                teamScore = teamScore.concat(", ").concat(currentTeamScore);
         }
-
         return teamScore;
     }
 
